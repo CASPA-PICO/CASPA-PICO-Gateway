@@ -7,6 +7,7 @@ server:
     key-alias: KeyAlias
 
 zuul:
+  add-host-header: true
   routes:
     caspa-pico-server:
       path: /**
