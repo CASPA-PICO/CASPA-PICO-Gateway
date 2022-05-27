@@ -1,5 +1,5 @@
 <h1>CASPA-PICO Gateway</h1>
-<p>Le programme est un projet Gradle, développé en Java version 17.</p>
+<p>Le programme est un projet <a href="https://github.com/gradle/gradle">Gradle</a>, développé en Java version 17.</p>
 <h2>Bibliothèques utilisées</h2>
 <p>
   <ul>
