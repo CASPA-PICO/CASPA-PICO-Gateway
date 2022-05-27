@@ -13,7 +13,7 @@ Dans notre cas, les requêtes vers https://caspa.icare.univ-lille.fr/grafana son
 <h2>Configuration du programme</h2>
 <h3>Configuration des redirections</h3>
 <p>
-  Pour changer la configuration du programme, modifiez le fichier <a href="https://github.com/CASPA-PICO/CASPA-PICO-Gateway/blob/master/application_dev.yml"><b>application_dev.properties</b></a>.</br>
+  Pour changer la configuration du programme, modifiez le fichier <a href="https://github.com/CASPA-PICO/CASPA-PICO-Gateway/blob/master/application_dev.yml"><b>application_dev.yml</b></a>.</br>
 Vous pouvez modifier les redirections en changeant les champs "path" et "url".</br></br>
 Exemple :</br>
 <ul>
@@ -37,7 +37,7 @@ Exemple :</br>
 Pour cela vous pouvez utiliser un service comme <a href="https://www.sslforfree.com/">SSL For Free</a>.<br/>
 Une fois le certificat obtenu, il doit être mis au format .p12 pour pouvoir être utilisé par la Gateway.<br/>
   Vous pouvez suivre <a href="https://devstory.net/12885/installer-un-certificat-ssl-gratuit-lets-encrypt-pour-spring-boot">ce guide</a> qui explique comment obtenir un fichier .p12</br></br>
-Une fois le fichier obtenu, il faut modifier la configuration de la Gateway, toujours dans le fichier .properties.</br>
+Une fois le fichier obtenu, il faut modifier la configuration de la Gateway, toujours dans le fichier .yml.</br>
 Modifiez les lignes suivantes sous <b>ssl</b> :<br/>
 <ul>
   <li><b>enabled</b> : true</li>
@@ -65,18 +65,18 @@ Modifiez les lignes suivantes sous <b>ssl</b> :<br/>
 </p>
 <h2>Lancement du programme</h2>
 <p>
-  Regroupez dans un même dossier le fichier .jar et votre fichier de configuration application_dev.properties</br>
+  Regroupez dans un même dossier le fichier .jar et votre fichier de configuration application_dev.yml</br>
   <h3>Pour Windows</h3>
   <ol>
-    <li>Ouvrir un terminal dans le dossier contenant le .jar et le .properties</li>
-    <li>Lancer la Gateway avec la commande :<br/><i>java -jar CASPA-PICO-Gateway-0.0.1-SNAPSHOT.jar -Dspring.config.location=application_dev.properties</i></li>
+    <li>Ouvrir un terminal dans le dossier contenant le .jar et le .yml</li>
+    <li>Lancer la Gateway avec la commande :<br/><i>java -jar CASPA-PICO-Gateway-0.0.1-SNAPSHOT.jar -Dspring.config.location=application_dev.yml</i></li>
   </ol>
   <h3>Pour Linux</h3>
   <p>Le port 443 (HTTPS) ne peut être utilisé que par les utilisateurs root, pour contourner cela et ne pas avoir à lancer la Gateway en root il est possible d'ajouter une exception.</br></p>
   <ol>
-    <li>Ouvrir un terminal dans le dossier contenant le .jar et le .properties</li>
+    <li>Ouvrir un terminal dans le dossier contenant le .jar et le .yml</li>
     <li>Installer authbind : <i>sudo apt get update && sudo apt get install authbind</i>
     <li>Autoriser l'utilisation du port 443 :<br/><i>sudo touch /etc/authbind/byport/443</i> puis <i>sudo chmod 777 /etc/authbind/byport/443</i>
-    <li>Lancer la Gateway avec la commande :<br/><i>authbind -Djava.net.preferIPv4Stack=true --deep java -jar CASPA-PICO-Gateway-0.0.1-SNAPSHOT.jar -Dspring.config.location=application_dev.properties</i></li>
+    <li>Lancer la Gateway avec la commande :<br/><i>authbind -Djava.net.preferIPv4Stack=true --deep java -jar CASPA-PICO-Gateway-0.0.1-SNAPSHOT.jar -Dspring.config.location=application_dev.yml</i></li>
   </ol>
 </p>
