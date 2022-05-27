@@ -45,4 +45,38 @@ Modifiez les lignes suivantes sous <b>ssl</b> :<br/>
   <li><b>key-store-password</b> : mot de passe du store (choisi lors de sa création)</li>
   <li><b>key-alias</b> : alias du store (choisi lors de sa création avec l'argument -name)</li>
 </ul>
+<b>Modifiez le port de la gateway</b> : sous "server", changer "port" à 443.
+</p>
+<h2>Compilation du programme</h2>
+<p>
+  Pour compiler le programme, assurez vous d'avoir installer la version 17 du JDK.
+  <h3>Sous Windows</h3>
+  <ol>
+    <li>Cloner le repo Github et ouvrir un terminal à la racine du projet</li>
+    <li>Compiler le programme avec : <i>./gradlew.bat assemble</i></li>
+    <li>Le .jar compilé se trouve dans le dossier build/libs/ et est nommé <b>CASPA-PICO-Gateway-0.0.1-SNAPSHOT.jar</b>
+  </ol>
+  <h3>Sous Linux</h3>
+  <ol>
+    <li>Cloner le repo Github et ouvrir un terminal à la racine du projet</li>
+    <li>Compiler le programme avec : <i>./gradlew assemble</i></li>
+    <li>Le .jar compilé se trouve dans le dossier build/libs/ et est nommé <b>CASPA-PICO-Gateway-0.0.1-SNAPSHOT.jar</b>
+  </ol>
+</p>
+<h2>Lancement du programme</h2>
+<p>
+  Regroupez dans un même dossier le fichier .jar et votre fichier de configuration application_dev.properties</br>
+  <h3>Pour Windows</h3>
+  <ol>
+    <li>Ouvrir un terminal dans le dossier contenant le .jar et le .properties</li>
+    <li>Lancer la Gateway avec la commande :<br/><i>java -jar CASPA-PICO-Gateway-0.0.1-SNAPSHOT.jar -Dspring.config.location=application_dev.properties</i></li>
+  </ol>
+  <h3>Pour Linux</h3>
+  <p>Le port 443 (HTTPS) ne peut être utilisé que par les utilisateurs root, pour contourner cela et ne pas avoir à lancer la Gateway en root il est possible d'ajouter une exception.</br></p>
+  <ol>
+    <li>Ouvrir un terminal dans le dossier contenant le .jar et le .properties</li>
+    <li>Installer authbind : <i>sudo apt get update && sudo apt get install authbind</i>
+    <li>Autoriser l'utilisation du port 443 :<br/><i>sudo touch /etc/authbind/byport/443</i> puis <i>sudo chmod 777 /etc/authbind/byport/443</i>
+    <li>Lancer la Gateway avec la commande :<br/><i>authbind -Djava.net.preferIPv4Stack=true --deep java -jar CASPA-PICO-Gateway-0.0.1-SNAPSHOT.jar -Dspring.config.location=application_dev.properties</i></li>
+  </ol>
 </p>
