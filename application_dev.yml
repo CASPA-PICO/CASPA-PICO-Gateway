@@ -13,11 +13,7 @@ zuul:
       path: /**
       url: http://localhost:8080/
       sensitive-headers:
-    influxdb:
+    grafana:
       path: /grafana/**
       url: http://localhost:3000/grafana
       sensitiveHeaders:
-    mongodb:
-      path: /mongodb/**
-      url: mongodb://localhost:27017
-      sensitive-headers:
